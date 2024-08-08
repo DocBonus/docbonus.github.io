@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shawanwit Poomsa-ad/Bonus Personal Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            position: fixed;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar a {
+            padding: 15px;
+            text-decoration: none;
+            color: #fff;
+            text-align: center;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        .content {
+            margin-left: 200px;
+            padding: 20px;
+            flex-grow: 1;
+            transition: margin-left 0.3s ease;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        #about {
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        #portfolio {
+            background-color: #e2e2e2;
+            padding: 20px;
+        }
+
+        #contact {
+            background-color: #d1d1d1;
+            padding: 20px;
+        }
+
+        .download-btn, .contact-btn {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .download-btn:hover, .contact-btn:hover {
+            background-color: #575757;
+        }
+
+        .toggle-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .toggle-btn:hover {
+            background-color: #575757;
+        }
+
+        .hidden-sidebar {
+            transform: translateX(-200px);
+        }
+
+        .content-expanded {
+            margin-left: 0;
+        }
+
+        img {
+            width: 25%;
+            height: 25%
+        }
+    </style>
+</head>
+<body>
+
+    <button class="toggle-btn" onclick="toggleSidebar()">☰ Navigational Menu</button>
+
+    <div class="sidebar" id="sidebar">
+        <a href="#about">About Me</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <div class="content" id="content">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Welcome to my (WIP) website! My name is Bonus and I'm currently an undergraduate student of mathematics at <a href="https://www.purdue.edu">Purdue University</a>. I'm originally from Thailand. </p>
+            <a href="path/to/your-cv.pdf" class="download-btn" download>Download CV</a>
+        </section>
+
+        <section id="portfolio">
+            <h2>What I've done so far.</h2>
+            <p>My main interests are Pure and Applied Mathematics especially in theoretical and orbital physics.</p>
+            <!-- Example work -->
+            <div>
+                <h3>Simple Orbital Propagator implemented through MATLAB</h3>
+                <p>Brief description of the project.</p>
+                <img src = "Portfolio/MATLAB Propagator.png">
+                <br>
+                <a href="http://example.com" target="_blank">View Project</a>
+            </div>
+            <div>
+                <h3>Hohmann Orbital Transfer implemented in STK</h3>
+                <p>Brief description of the project.</p>
+                <img src ="Portfolio/Hohmann.png">
+                <br>
+                <a href="http://example.com" target="_blank">View Project</a>
+            </div>
+            <div>
+                <h3>Identities of the Graph Variety axiomatized by the term equation x2y ≈ xy2.</h3>
+                <p>Brief description of the project.</p>
+                <img src = "Portfolio/Identities.png">
+                <br>
+                <a href="Portfolio/Identities_Arising_from_the_Graph_Varieties_axiomatized_by_the_term_equation-17.pdf" target="_blank">View Project</a>
+            </div>
+
+
+            <!-- Add more projects as needed -->
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Get in touch with me through the following platforms:</p>
+            <a href="mailto:spoomsaa@purdue.edu" class="contact-btn">Email me!</a> 
+            <a href="https://github.com/DocBonus" class="contact-btn" target="_blank">GitHub</a>
+            <!-- Add more contact buttons as needed -->
+        </section>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            sidebar.classList.toggle('hidden-sidebar');
+            content.classList.toggle('content-expanded');
+        }
+    </script>
+
+</body>
+</html>
