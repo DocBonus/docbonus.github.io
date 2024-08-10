@@ -20,6 +20,29 @@
         .right a {
             margin-left: 20px; 
         }
+                /* Media Queries for Mobile Optimization */
+                @media (max-width: 768px) {
+            nav.group {
+                flex-direction: column; /* Stack the elements vertically */
+                align-items: flex-start; /* Align to the left */
+            }
+            .right a {
+                margin-left: 0; /* Remove margin between links */
+                margin-top: 10px; /* Add space between links */
+            }
+            .left h1, .right h1 {
+                font-size: 1.5em; /* Smaller font size on mobile */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .left h1, .right h1 {
+                font-size: 1.2em; /* Even smaller font size for small screens */
+            }
+            .right a {
+                font-size: 1em; /* Adjust link size for readability */
+            }
+        }
     </style>
 </head>
 <body>
