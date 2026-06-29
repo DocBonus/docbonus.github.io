@@ -6,346 +6,63 @@
   <title>Shawanwit "Bonus" Poomsa-ad</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --black: #111111;
-      --off-white: #F5F5F0;
-      --red: #D32F2F;
-      --mid: #444444;
-      --muted: #888888;
-      --rule: 3px solid #111111;
+      --black: #111111; --off-white: #F5F5F0; --red: #D32F2F;
+      --mid: #444444; --muted: #888888; --rule: 3px solid #111111;
     }
-
     html { font-size: 16px; }
-
-    body {
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      background: var(--off-white);
-      color: var(--black);
-      min-height: 100vh;
-    }
-
-    /* ── NAV ── */
-    nav {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: end;
-      padding: 40px 48px 16px;
-      border-bottom: var(--rule);
-    }
-
-    .nav-name {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--black);
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-    }
-
-    .nav-links a {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--black);
-      text-decoration: none;
-      border-bottom: 2px solid transparent;
-      padding-bottom: 2px;
-      transition: border-color 0.15s;
-    }
-
-    .nav-links a:hover,
-    .nav-links a:focus {
-      border-color: var(--red);
-      outline: none;
-    }
-
-    /* ── HERO ── */
-    .hero {
-      padding: 64px 48px 0;
-      display: grid;
-      grid-template-columns: 3fr 2fr;
-      gap: 48px;
-      align-items: start;
-    }
-
-    .hero-name {
-      font-size: clamp(40px, 6vw, 72px);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1;
-      color: var(--black);
-    }
-
+    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: var(--off-white); color: var(--black); min-height: 100vh; }
+    nav { display: grid; grid-template-columns: 1fr auto; align-items: end; padding: 40px 48px 16px; border-bottom: var(--rule); }
+    .nav-name { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--black); text-decoration: none; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--black); text-decoration: none; border-bottom: 2px solid transparent; padding-bottom: 2px; transition: border-color 0.15s; }
+    .nav-links a:hover, .nav-links a:focus { border-color: var(--red); outline: none; }
+    .hero { padding: 64px 48px 0; display: grid; grid-template-columns: 3fr 2fr; gap: 48px; align-items: start; }
+    .hero-name { font-size: clamp(40px, 6vw, 72px); font-weight: 700; letter-spacing: -0.02em; line-height: 1; color: var(--black); }
     .hero-name .accent { color: var(--red); }
-
     .hero-right { padding-top: 8px; }
-
-    .label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-
-    .dedication {
-      font-size: 13px;
-      line-height: 1.75;
-      color: var(--mid);
-      border-left: 3px solid var(--red);
-      padding-left: 16px;
-      font-style: italic;
-    }
-
-    /* ── INTRO BAR ── */
-    .intro-bar {
-      margin: 48px 48px 0;
-      padding: 24px;
-      background: var(--black);
-      color: var(--off-white);
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 24px;
-      align-items: center;
-    }
-
-    .intro-bar-label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--red);
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-    }
-
-    .intro-bar p {
-      font-size: 13px;
-      line-height: 1.75;
-      color: #cccccc;
-    }
-
-    /* ── SECTIONS ── */
+    .label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .dedication { font-size: 13px; line-height: 1.75; color: var(--mid); border-left: 3px solid var(--red); padding-left: 16px; font-style: italic; }
+    .intro-bar { margin: 48px 48px 0; padding: 24px; background: var(--black); color: var(--off-white); display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center; }
+    .intro-bar-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); writing-mode: vertical-rl; transform: rotate(180deg); }
+    .intro-bar p { font-size: 13px; line-height: 1.75; color: #cccccc; }
     .section { padding: 64px 48px 0; }
-
-    .section-header {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 24px;
-      align-items: end;
-      margin-bottom: 40px;
-    }
-
-    .section-num {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--red);
-      padding-bottom: 14px;
-    }
-
-    .section-title {
-      font-size: clamp(22px, 3vw, 36px);
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      border-top: 2px solid var(--black);
-      padding-top: 12px;
-    }
-
-    /* ── PAPER GRID (research cards) ── */
-    .paper-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-      background: var(--black);
-    }
-
-    .paper-cell {
-      background: var(--off-white);
-      padding: 28px;
-    }
-
-    .paper-cell.full { grid-column: 1 / -1; }
-
-    .paper-label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-
-    .paper-title {
-      font-size: 18px;
-      font-weight: 700;
-      line-height: 1.3;
-      margin-bottom: 14px;
-    }
-
-    .paper-body {
-      font-size: 13px;
-      line-height: 1.8;
-      color: var(--mid);
-    }
-
-    .paper-body em {
-      font-style: italic;
-      color: #666666;
-    }
-
-    .paper-link {
-      display: inline-block;
-      margin-top: 20px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--red);
-      text-decoration: none;
-      border-bottom: 1px solid var(--red);
-      padding-bottom: 2px;
-    }
-
+    .section-header { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: end; margin-bottom: 40px; }
+    .section-num { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); padding-bottom: 14px; }
+    .section-title { font-size: clamp(22px, 3vw, 36px); font-weight: 700; letter-spacing: -0.01em; border-top: 2px solid var(--black); padding-top: 12px; }
+    .paper-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--black); }
+    .paper-cell { background: var(--off-white); padding: 28px; }
+    .paper-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+    .paper-title { font-size: 18px; font-weight: 700; line-height: 1.3; margin-bottom: 14px; }
+    .paper-body { font-size: 13px; line-height: 1.8; color: var(--mid); }
+    .paper-body em { font-style: italic; color: #666666; }
+    .paper-link { display: inline-block; margin-top: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); text-decoration: none; border-bottom: 1px solid var(--red); padding-bottom: 2px; }
     .paper-link:hover { opacity: 0.75; }
 
-    /* ── PDF SLIDESHOW UPDATES ── */
-    .pdf-container {
-      background: #1a1a1a;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-      min-height: 380px;
-    }
+    /* PDF viewer */
+    .pdf-viewer { background: #111; display: flex; flex-direction: column; min-height: 360px; }
+    .pdf-canvas-wrap { flex: 1; display: flex; align-items: center; justify-content: center; padding: 20px; overflow: hidden; }
+    .pdf-canvas-wrap canvas { max-width: 100%; max-height: 420px; display: block; box-shadow: 0 2px 16px rgba(0,0,0,0.6); }
+    .pdf-loading { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #333; }
+    .pdf-controls { display: flex; align-items: stretch; border-top: 1px solid #1f1f1f; }
+    .pdf-btn { background: none; border: none; color: #555; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; padding: 12px 20px; transition: color 0.15s, background 0.15s; }
+    .pdf-btn:hover:not(:disabled) { color: var(--off-white); background: #1a1a1a; }
+    .pdf-btn:disabled { opacity: 0.15; cursor: default; }
+    .pdf-page-info { flex: 1; text-align: center; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #333; display: flex; align-items: center; justify-content: center; }
 
-    .pdf-viewport {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      padding: 10px;
-    }
+    footer { margin-top: 80px; padding: 24px 48px; border-top: var(--rule); display: flex; justify-content: space-between; align-items: center; }
+    .footer-left { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .footer-mark { width: 32px; height: 32px; background: var(--red); display: flex; align-items: center; justify-content: center; }
+    .footer-mark span { font-size: 11px; font-weight: 700; color: #ffffff; letter-spacing: 0.06em; }
 
-    .pdf-viewport canvas {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-
-    .pdf-controls {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #111111;
-      padding: 12px 20px;
-      border-top: 1px solid #222;
-    }
-
-    .pdf-btn {
-      background: transparent;
-      border: 1px solid #444;
-      color: #fff;
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      padding: 6px 12px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .pdf-btn:hover:not(:disabled) {
-      border-color: var(--red);
-      color: var(--red);
-    }
-
-    .pdf-btn:disabled {
-      opacity: 0.3;
-      cursor: not-allowed;
-    }
-
-    .pdf-counter {
-      color: #888;
-      font-size: 11px;
-      font-family: monospace;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      margin-top: 80px;
-      padding: 24px 48px;
-      border-top: var(--rule);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-left {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .footer-mark {
-      width: 32px;
-      height: 32px;
-      background: var(--red);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .footer-mark span {
-      font-size: 11px;
-      font-weight: 700;
-      color: #ffffff;
-      letter-spacing: 0.06em;
-    }
-
-    /* ── RESPONSIVE ── */
     @media (max-width: 680px) {
-      nav {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 24px 24px 14px;
-      }
-
+      nav { grid-template-columns: 1fr; gap: 20px; padding: 24px 24px 14px; }
       .nav-links { gap: 20px; }
-
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 40px 24px 0;
-        gap: 28px;
-      }
-
+      .hero { grid-template-columns: 1fr; padding: 40px 24px 0; gap: 28px; }
       .intro-bar { margin: 32px 24px 0; }
-
       .section { padding: 48px 24px 0; }
-
       .paper-grid { grid-template-columns: 1fr; }
-      .paper-cell.full { grid-column: 1; }
-      .pdf-container { min-height: 280px; }
-
-      footer {
-        padding: 24px;
-        flex-direction: column;
-        gap: 16px;
-        align-items: flex-start;
-      }
+      footer { padding: 24px; flex-direction: column; gap: 16px; align-items: flex-start; }
     }
   </style>
 </head>
@@ -363,11 +80,7 @@
 
   <section class="hero">
     <div>
-      <h1 class="hero-name">
-        Shawanwit<br>
-        <span class="accent">"Bonus"</span><br>
-        <span class="no-widow">Poomsa-ad</span>
-      </h1>
+      <h1 class="hero-name">Shawanwit<br><span class="accent">"Bonus"</span><br>Poomsa-ad</h1>
     </div>
     <div class="hero-right">
       <p class="label">A note</p>
@@ -377,16 +90,18 @@
 
   <div class="intro-bar">
     <div class="intro-bar-label">About</div>
-    <p>Welcome to the personal site of Shawanwit Poomsa-ad (Bonus). Currently I am gardening in the Northeast of Thailand. Looking for employment or research.</p>
+    <p>Welcome to the personal site of Shawanwit Poomsa-ad (Bonus) — mathematician, researcher, and student of the world. Use the navigation above to explore research, read the blog, or download a CV.</p>
   </div>
 
   <section class="section" id="research">
     <div class="section-header">
       <div class="section-num">01 — Research</div>
-      <h2 class="section-title">Selected Works</h2>
+      <h2 class="section-title">Selected Work</h2>
     </div>
 
     <div class="paper-grid">
+
+      <!-- HIGGS -->
       <div class="paper-cell">
         <p class="paper-label">Particle Physics · Purdue University</p>
         <h3 class="paper-title">Unlocking the Universe: Rediscovering the Higgs Boson</h3>
@@ -395,41 +110,43 @@
           <br><br>
           <em>Presented at Purdue's Fall Undergraduate Research Expo with Dean Shock (Purdue Physics and Math '26), Elijah Forbes (Purdue Physics '28), and Sam Waymire (Purdue Physics '28). Guidance from Prof. Andreas Jung and Santosh Bandhari.</em>
         </p>
-        <a class="paper-link" href="/Portfolio/HiggsResearchPoster/Higgs Research Poster-1.pdf">Download poster PDF →</a>
+        <a class="paper-link" href="/Portfolio/HiggsResearchPoster/Higgs%20Research%20Poster-1.pdf">Download poster PDF →</a>
       </div>
-      
-      <div class="pdf-container" id="pdf-viewer-1">
-        <div class="pdf-viewport">
-          <canvas></canvas>
+
+      <div class="pdf-viewer" id="higgs-viewer">
+        <div class="pdf-canvas-wrap" id="higgs-wrap">
+          <p class="pdf-loading" id="higgs-loading">Loading poster…</p>
         </div>
         <div class="pdf-controls">
-          <button class="pdf-btn prev-btn">Prev</button>
-          <span class="pdf-counter"><span class="current-page">0</span> / <span class="total-pages">0</span></span>
-          <button class="pdf-btn next-btn">Next</button>
+          <button class="pdf-btn" id="higgs-prev" disabled>← Prev</button>
+          <span class="pdf-page-info" id="higgs-info">— / —</span>
+          <button class="pdf-btn" id="higgs-next" disabled>Next →</button>
         </div>
       </div>
 
+      <!-- GRAPH VARIETIES -->
       <div class="paper-cell">
-        <p class="paper-label">Universal Algebra · Independent Research</p>
+        <p class="paper-label">Universal Algebra · Purdue University</p>
         <h3 class="paper-title">Identities of the Graph Variety Axiomatized by x²y ≈ xy²</h3>
         <p class="paper-body">
-          I attempted to characterise the graph variety Mod𝒢{x²y ≈ xy²} which is the class of all directed graphs whose graph algebras satisfy the term equation x²y ≈ xy². I found a structural theorem characterising membership via loop-uniformity within connected components, and an identity theorem giving necessary and sufficient conditions for a term equation to be an identity of the variety.
+          A characterisation of the graph variety Mod<sub>G</sub>{x²y ≈ xy²} — the class of all directed graphs whose graph algebras satisfy the term equation x²y ≈ xy². Two main results are established: a structural theorem characterising membership via loop-uniformity within connected components, and an identity theorem giving necessary and sufficient conditions for a term equation to be an identity of the variety.
           <br><br>
           <em>Joint work with Tiang Poomsa-ard. Presented March 2024.</em>
         </p>
         <a class="paper-link" href="/Portfolio/Identities_Arising_from_the_Graph_Varieties_axiomatized_by_the_term_equation-17.pdf">Download slides PDF →</a>
       </div>
-      
-      <div class="pdf-container" id="pdf-viewer-2">
-        <div class="pdf-viewport">
-          <canvas></canvas>
+
+      <div class="pdf-viewer" id="slides-viewer">
+        <div class="pdf-canvas-wrap" id="slides-wrap">
+          <p class="pdf-loading" id="slides-loading">Loading slides…</p>
         </div>
         <div class="pdf-controls">
-          <button class="pdf-btn prev-btn">Prev</button>
-          <span class="pdf-counter"><span class="current-page">0</span> / <span class="total-pages">0</span></span>
-          <button class="pdf-btn next-btn">Next</button>
+          <button class="pdf-btn" id="slides-prev" disabled>← Prev</button>
+          <span class="pdf-page-info" id="slides-info">— / —</span>
+          <button class="pdf-btn" id="slides-next" disabled>Next →</button>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -438,118 +155,100 @@
     <div class="footer-mark" aria-hidden="true"><span>SP</span></div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-  <script>
-    // Point PDF.js to the worker script
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  <script type="module">
+    import * as pdfjsLib from 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.min.mjs';
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.worker.min.mjs';
 
-    class PDFSlideshow {
-      constructor(containerId, pdfUrl) {
-        this.container = document.getElementById(containerId);
-        this.canvas = this.container.querySelector('canvas');
-        this.ctx = this.canvas.getContext('2d');
-        this.prevBtn = this.container.querySelector('.prev-btn');
-        this.nextBtn = this.container.querySelector('.next-btn');
-        this.currPageSpan = this.container.querySelector('.current-page');
-        this.totalPageSpan = this.container.querySelector('.total-pages');
-        
-        this.pdfDoc = null;
-        this.pageNum = 1;
-        this.pageRendering = false;
-        this.pageNumPending = null;
-
-        this.init(pdfUrl);
-      }
-
-      init(pdfUrl) {
-        pdfjsLib.getDocument(pdfUrl).promise.then((pdfDoc_) => {
-          this.pdfDoc = pdfDoc_;
-          this.totalPageSpan.textContent = this.pdfDoc.numPages;
-          this.renderPage(this.pageNum);
-          this.setupListeners();
-        }).catch(err => {
-          console.error('Error loading PDF: ', err);
-          this.container.querySelector('.pdf-viewport').innerHTML = 
-            `<p style="color:var(--red); font-size:11px; text-transform:uppercase; letter-spacing:0.1em;">Failed to load preview</p>`;
-        });
-      }
-
-      renderPage(num) {
-        this.pageRendering = true;
-        this.pdfDoc.getPage(num).then((page) => {
-          // Adjust device pixel ratio for ultra-crisp presentation text rendering
-          const dpr = window.devicePixelRatio || 1;
-          const viewport = page.getViewport({ scale: 1.5 });
-          
-          this.canvas.height = viewport.height * dpr;
-          this.canvas.width = viewport.width * dpr;
-          this.canvas.style.width = '100%';
-          this.canvas.style.height = 'auto';
-          
-          this.ctx.scale(dpr, dpr);
-
-          const renderContext = {
-            canvasContext: this.ctx,
-            viewport: viewport
-          };
-          
-          const renderTask = page.render(renderContext);
-
-          renderTask.promise.then(() => {
-            this.pageRendering = false;
-            if (this.pageNumPending !== null) {
-              this.renderPage(this.pageNumPending);
-              this.pageNumPending = null;
-            }
-          });
-        });
-
-        this.currPageSpan.textContent = num;
-        this.updateButtons();
-      }
-
-      queueRenderPage(num) {
-        if (this.pageRendering) {
-          this.pageNumPending = num;
-        } else {
-          this.renderPage(num);
-        }
-      }
-
-      updateButtons() {
-        this.prevBtn.disabled = (this.pageNum <= 1);
-        this.nextBtn.disabled = (this.pageNum >= this.pdfDoc.numPages);
-      }
-
-      setupListeners() {
-        this.prevBtn.addEventListener('click', () => {
-          if (this.pageNum <= 1) return;
-          this.pageNum--;
-          this.queueRenderPage(this.pageNum);
-        });
-
-        this.nextBtn.addEventListener('click', () => {
-          if (this.pageNum >= this.pdfDoc.numPages) return;
-          this.pageNum++;
-          this.queueRenderPage(this.pageNum);
-        });
-
-        // Responsive re-render on resize
-        let resizeTimeout;
-        window.addEventListener('resize', () => {
-          clearTimeout(resizeTimeout);
-          resizeTimeout = setTimeout(() => {
-            if (this.pdfDoc) this.renderPage(this.pageNum);
-          }, 200);
-        });
-      }
+    async function renderPage(pdf, pageNum, wrap) {
+      const old = wrap.querySelector('canvas');
+      if (old) old.remove();
+      const page = await pdf.getPage(pageNum);
+      const wrapW = wrap.clientWidth - 40;
+      const baseVP = page.getViewport({ scale: 1 });
+      const scale = Math.min(2, wrapW / baseVP.width);
+      const viewport = page.getViewport({ scale });
+      const canvas = document.createElement('canvas');
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width  = viewport.width  * dpr;
+      canvas.height = viewport.height * dpr;
+      canvas.style.width  = viewport.width  + 'px';
+      canvas.style.height = viewport.height + 'px';
+      wrap.appendChild(canvas);
+      const ctx = canvas.getContext('2d');
+      ctx.scale(dpr, dpr);
+      await page.render({ canvasContext: ctx, viewport }).promise;
     }
 
-    // Initialize both PDF instances safely using your relative paths
-    window.addEventListener('DOMContentLoaded', () => {
-      new PDFSlideshow('pdf-viewer-1', 'Portfolio/HiggsResearchPoster/Higgs Research Poster-1.pdf');
-      new PDFSlideshow('pdf-viewer-2', 'Portfolio/Identities_Arising_from_the_Graph_Varieties_axiomatized_by_the_term_equation-17.pdf');
+    function makeViewer(opts) {
+      let cur = 1, total = 0, pdf = null;
+      const wrap    = document.getElementById(opts.wrap);
+      const loading = document.getElementById(opts.loading);
+      const info    = document.getElementById(opts.info);
+      const prev    = document.getElementById(opts.prev);
+      const next    = document.getElementById(opts.next);
+
+      function sync() {
+        info.textContent = total > 0 ? `${cur} / ${total}` : '— / —';
+        if (prev) prev.disabled = cur <= 1;
+        if (next) next.disabled = cur >= total;
+      }
+
+      async function go(n) {
+        if (!pdf || n < 1 || n > total) return;
+        cur = n; sync();
+        await renderPage(pdf, cur, wrap);
+      }
+
+      if (prev) prev.addEventListener('click', () => go(cur - 1));
+      if (next) next.addEventListener('click', () => go(cur + 1));
+
+      // keyboard nav — only when hovering the viewer
+      const viewer = document.getElementById(opts.viewer);
+      viewer.addEventListener('mouseenter', () => {
+        viewer._kbHandler = (e) => {
+          if (e.key === 'ArrowRight' || e.key === 'ArrowDown') go(cur + 1);
+          if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   go(cur - 1);
+        };
+        document.addEventListener('keydown', viewer._kbHandler);
+      });
+      viewer.addEventListener('mouseleave', () => {
+        if (viewer._kbHandler) document.removeEventListener('keydown', viewer._kbHandler);
+      });
+
+      (async () => {
+        try {
+          pdf   = await pdfjsLib.getDocument(opts.src).promise;
+          total = pdf.numPages;
+          loading.remove();
+          await renderPage(pdf, 1, wrap);
+          sync();
+        } catch (e) {
+          loading.textContent = 'Document unavailable.';
+        }
+      })();
+    }
+
+    makeViewer({
+      viewer:  'higgs-viewer',
+      wrap:    'higgs-wrap',
+      loading: 'higgs-loading',
+      info:    'higgs-info',
+      prev:    'higgs-prev',
+      next:    'higgs-next',
+      src:     '/Portfolio/HiggsResearchPoster/Higgs%20Research%20Poster-1.pdf',
+    });
+
+    makeViewer({
+      viewer:  'slides-viewer',
+      wrap:    'slides-wrap',
+      loading: 'slides-loading',
+      info:    'slides-info',
+      prev:    'slides-prev',
+      next:    'slides-next',
+      src:     '/Portfolio/Identities_Arising_from_the_Graph_Varieties_axiomatized_by_the_term_equation-17.pdf',
     });
   </script>
+
 </body>
 </html>
