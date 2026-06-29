@@ -1,49 +1,364 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Shawanwit "Bonus" Poomsa-ad's Personal Website</title>
-    <style>
-        nav.group {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-        }
-        .left h1, .right a {
-            margin: 0;
-            text-decoration: none;
-        }
-        .right a {
-            margin-left: 20px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shawanwit "Bonus" Poomsa-ad</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #111111;
+      --off-white: #F5F5F0;
+      --red: #D32F2F;
+      --mid: #444444;
+      --muted: #888888;
+      --rule: 3px solid #111111;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background: var(--off-white);
+      color: var(--black);
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      padding: 40px 48px 16px;
+      border-bottom: var(--rule);
+    }
+
+    .nav-name {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 2px;
+      transition: border-color 0.15s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      border-color: var(--red);
+      outline: none;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 64px 48px 0;
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .hero-name {
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      color: var(--black);
+    }
+
+    .hero-name .accent { color: var(--red); }
+
+    .hero-right { padding-top: 8px; }
+
+    .label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .dedication {
+      font-size: 13px;
+      line-height: 1.75;
+      color: var(--mid);
+      border-left: 3px solid var(--red);
+      padding-left: 16px;
+      font-style: italic;
+    }
+
+    /* ── INTRO BAR ── */
+    .intro-bar {
+      margin: 48px 48px 0;
+      padding: 24px;
+      background: var(--black);
+      color: var(--off-white);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .intro-bar-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+    }
+
+    .intro-bar p {
+      font-size: 13px;
+      line-height: 1.75;
+      color: #cccccc;
+    }
+
+    /* ── SECTIONS ── */
+    .section { padding: 64px 48px 0; }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 40px;
+    }
+
+    .section-num {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      padding-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: clamp(22px, 3vw, 36px);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      border-top: 2px solid var(--black);
+      padding-top: 12px;
+    }
+
+    /* ── PAPER GRID (research cards) ── */
+    .paper-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--black);
+    }
+
+    .paper-cell {
+      background: var(--off-white);
+      padding: 28px;
+    }
+
+    .paper-cell.full { grid-column: 1 / -1; }
+
+    .paper-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .paper-title {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 14px;
+    }
+
+    .paper-body {
+      font-size: 13px;
+      line-height: 1.8;
+      color: var(--mid);
+    }
+
+    .paper-body em {
+      font-style: italic;
+      color: #666666;
+    }
+
+    .paper-link {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red);
+      text-decoration: none;
+      border-bottom: 1px solid var(--red);
+      padding-bottom: 2px;
+    }
+
+    .paper-link:hover { opacity: 0.75; }
+
+    .paper-img {
+      background: #1a1a1a;
+      overflow: hidden;
+      min-height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .paper-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      margin-top: 80px;
+      padding: 24px 48px;
+      border-top: var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-left {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .footer-mark {
+      width: 32px;
+      height: 32px;
+      background: var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-mark span {
+      font-size: 11px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      nav {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 24px 24px 14px;
+      }
+
+      .nav-links { gap: 20px; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 40px 24px 0;
+        gap: 28px;
+      }
+
+      .intro-bar { margin: 32px 24px 0; }
+
+      .section { padding: 48px 24px 0; }
+
+      .paper-grid { grid-template-columns: 1fr; }
+      .paper-cell.full { grid-column: 1; }
+      .paper-img { min-height: 200px; }
+
+      footer {
+        padding: 24px;
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
 
-          <nav class="group">
-            <div class="left">
-                <h1><a href="/">Shawanwit Poomsa-ad</a></h1> 
-            </div>
-            <div class="right">
-            <h1>
-             <a href="/">home</a>
-              <a href="/Portfolio/shawanwitCV.pdf">cv</a>
-              <a href="#Research">research</a>
-              <a href="/blog">blog</a>
-            </h1>
-            </div>
-          </nav>
-          <span style="font-size: 12px; font-style: italic;">Dedicated to the memories of those I love.</span>
-          <hr>
+  <nav>
+    <a class="nav-name" href="/">Shawanwit Poomsa-ad</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/Portfolio/shawanwitCV.pdf">CV</a>
+      <a href="#research">Research</a>
+      <a href="/blog">Blog</a>
+    </div>
+  </nav>
 
-          Hello and welcome to the personal website of Shawanwit Poomsa-ad (Bonus). Click on the quick navigation buttons above to find the sections you're interested in or take a look around (it's empty right now).
+  <section class="hero">
+    <div>
+      <h1 class="hero-name">
+        Shawanwit<br>
+        <span class="accent">"Bonus"</span><br>
+        Poomsa-ad
+      </h1>
+    </div>
+    <div class="hero-right">
+      <p class="label">A note</p>
+      <p class="dedication">Dedicated to the memories of those I love.</p>
+    </div>
+  </section>
 
-          <h1 id = "Research">Research</h1>
-            <p>These are some of the research I have engaged in so far.</p>
-            <h2>Unlocking the univerese: Redisvovering the Higgs Boson.</h2>
-                <p>
-                    In this project we utilize the CMS open dataset and apply data analysis techniques (mainly through Python) to find the mass of the Higgs Boson. <span style = "font-style: italic;">Presented at Purdue's Fall Undergraduate Research Expo with Dean Shock (Purdue Physics and Math '26), Elijah Forbes (Purdue Physics '28), and Sam Waymire (Purdue Physics '28). We are immensely grateful for Prof. Andreas Jung and Santosh Bandhari for their guidance.</span> <a href = "/Portfolio/HiggsResearchPoster/Higgs Research Poster-1.pdf"> Download the poster pdf here</a>.
-                </p> 
-                <img src = "/Portfolio/HiggsResearchPoster/Slide1.png" style="max-width: 100%; height: auto;">
+  <div class="intro-bar">
+    <div class="intro-bar-label">About</div>
+    <p>Welcome to the personal site of Shawanwit Poomsa-ad (Bonus) — mathematician, researcher, and student of the world. Use the navigation above to explore research, read the blog, or download a CV.</p>
+  </div>
+
+  <section class="section" id="research">
+    <div class="section-header">
+      <div class="section-num">01 — Research</div>
+      <h2 class="section-title">Selected Work</h2>
+    </div>
+
+    <div class="paper-grid">
+      <div class="paper-cell">
+        <p class="paper-label">Particle Physics · Purdue University</p>
+        <h3 class="paper-title">Unlocking the Universe: Rediscovering the Higgs Boson</h3>
+        <p class="paper-body">
+          Using the CMS open dataset and Python-based data analysis techniques to independently determine the mass of the Higgs Boson.
+          <br><br>
+          <em>Presented at Purdue's Fall Undergraduate Research Expo with Dean Shock (Purdue Physics and Math '26), Elijah Forbes (Purdue Physics '28), and Sam Waymire (Purdue Physics '28). Guidance from Prof. Andreas Jung and Santosh Bandhari.</em>
+        </p>
+        <a class="paper-link" href="/Portfolio/HiggsResearchPoster/Higgs Research Poster-1.pdf">Download poster PDF →</a>
+      </div>
+      <div class="paper-img">
+        <img src="/Portfolio/HiggsResearchPoster/Slide1.png" alt="Higgs Boson research poster preview">
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="footer-left">Shawanwit Poomsa-ad · Bangkok, Thailand</p>
+    <div class="footer-mark" aria-hidden="true"><span>SP</span></div>
+  </footer>
+
 </body>
+</html>
