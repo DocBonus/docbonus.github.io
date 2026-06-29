@@ -218,20 +218,68 @@
 
     .paper-link:hover { opacity: 0.75; }
 
-    .paper-img {
+    /* ── PDF SLIDESHOW UPDATES ── */
+    .pdf-container {
       background: #1a1a1a;
-      overflow: hidden;
-      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      min-height: 380px;
+    }
+
+    .pdf-viewport {
+      flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
+      padding: 10px;
     }
 
-    .paper-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+    .pdf-viewport canvas {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .pdf-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #111111;
+      padding: 12px 20px;
+      border-top: 1px solid #222;
+    }
+
+    .pdf-btn {
+      background: transparent;
+      border: 1px solid #444;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 6px 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .pdf-btn:hover:not(:disabled) {
+      border-color: var(--red);
+      color: var(--red);
+    }
+
+    .pdf-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .pdf-counter {
+      color: #888;
+      font-size: 11px;
+      font-family: monospace;
     }
 
     /* ── FOOTER ── */
@@ -290,7 +338,7 @@
 
       .paper-grid { grid-template-columns: 1fr; }
       .paper-cell.full { grid-column: 1; }
-      .paper-img { min-height: 200px; }
+      .pdf-container { min-height: 280px; }
 
       footer {
         padding: 24px;
@@ -318,7 +366,7 @@
       <h1 class="hero-name">
         Shawanwit<br>
         <span class="accent">"Bonus"</span><br>
-        Poomsa-ad
+        <span class="no-widow">Poomsa-ad</span>
       </h1>
     </div>
     <div class="hero-right">
@@ -349,24 +397,37 @@
         </p>
         <a class="paper-link" href="/Portfolio/HiggsResearchPoster/Higgs Research Poster-1.pdf">Download poster PDF →</a>
       </div>
-      <div class="paper-img">
-        <img src="/Portfolio/HiggsResearchPoster/Slide1.png" alt="Higgs Boson research poster preview">
+      
+      <div class="pdf-container" id="pdf-viewer-1">
+        <div class="pdf-viewport">
+          <canvas></canvas>
+        </div>
+        <div class="pdf-controls">
+          <button class="pdf-btn prev-btn">Prev</button>
+          <span class="pdf-counter"><span class="current-page">0</span> / <span class="total-pages">0</span></span>
+          <button class="pdf-btn next-btn">Next</button>
+        </div>
       </div>
 
       <div class="paper-cell">
-        <p class="paper-label">Universal Algebra · Independet Research</p>
+        <p class="paper-label">Universal Algebra · Independent Research</p>
         <h3 class="paper-title">Identities of the Graph Variety Axiomatized by x²y ≈ xy²</h3>
         <p class="paper-body">
-          I attempted to characterise the graph variety Mod&#x1D4A2;{x²y ≈ xy²} which is the class of all directed graphs whose graph algebras satisfy the term equation x²y ≈ xy². I found a structural theorem characterising membership via loop-uniformity within connected components, and an identity theorem giving necessary and sufficient conditions for a term equation to be an identity of the variety.
+          I attempted to characterise the graph variety Mod𝒢{x²y ≈ xy²} which is the class of all directed graphs whose graph algebras satisfy the term equation x²y ≈ xy². I found a structural theorem characterising membership via loop-uniformity within connected components, and an identity theorem giving necessary and sufficient conditions for a term equation to be an identity of the variety.
           <br><br>
           <em>Joint work with Tiang Poomsa-ard. Presented March 2024.</em>
         </p>
         <a class="paper-link" href="/Portfolio/Identities_Arising_from_the_Graph_Varieties_axiomatized_by_the_term_equation-17.pdf">Download slides PDF →</a>
       </div>
-      <div class="paper-cell" style="background:#1a1a1a; display:flex; align-items:center; justify-content:center; min-height:200px;">
-        <div style="text-align:center; padding:24px;">
-          <div style="font-size:28px; font-weight:700; color:#D32F2F; letter-spacing:-0.02em; line-height:1.1; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">x²y ≈ xy²</div>
-          <div style="margin-top:16px; font-size:10px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#555; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">Graph Variety · Universal Algebra</div>
+      
+      <div class="pdf-container" id="pdf-viewer-2">
+        <div class="pdf-viewport">
+          <canvas></canvas>
+        </div>
+        <div class="pdf-controls">
+          <button class="pdf-btn prev-btn">Prev</button>
+          <span class="pdf-counter"><span class="current-page">0</span> / <span class="total-pages">0</span></span>
+          <button class="pdf-btn next-btn">Next</button>
         </div>
       </div>
     </div>
@@ -377,5 +438,118 @@
     <div class="footer-mark" aria-hidden="true"><span>SP</span></div>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>
+    // Point PDF.js to the worker script
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    class PDFSlideshow {
+      constructor(containerId, pdfUrl) {
+        this.container = document.getElementById(containerId);
+        this.canvas = this.container.querySelector('canvas');
+        this.ctx = this.canvas.getContext('2d');
+        this.prevBtn = this.container.querySelector('.prev-btn');
+        this.nextBtn = this.container.querySelector('.next-btn');
+        this.currPageSpan = this.container.querySelector('.current-page');
+        this.totalPageSpan = this.container.querySelector('.total-pages');
+        
+        this.pdfDoc = null;
+        this.pageNum = 1;
+        this.pageRendering = false;
+        this.pageNumPending = null;
+
+        this.init(pdfUrl);
+      }
+
+      init(pdfUrl) {
+        pdfjsLib.getDocument(pdfUrl).promise.then((pdfDoc_) => {
+          this.pdfDoc = pdfDoc_;
+          this.totalPageSpan.textContent = this.pdfDoc.numPages;
+          this.renderPage(this.pageNum);
+          this.setupListeners();
+        }).catch(err => {
+          console.error('Error loading PDF: ', err);
+          this.container.querySelector('.pdf-viewport').innerHTML = 
+            `<p style="color:var(--red); font-size:11px; text-transform:uppercase; letter-spacing:0.1em;">Failed to load preview</p>`;
+        });
+      }
+
+      renderPage(num) {
+        this.pageRendering = true;
+        this.pdfDoc.getPage(num).then((page) => {
+          // Adjust device pixel ratio for ultra-crisp presentation text rendering
+          const dpr = window.devicePixelRatio || 1;
+          const viewport = page.getViewport({ scale: 1.5 });
+          
+          this.canvas.height = viewport.height * dpr;
+          this.canvas.width = viewport.width * dpr;
+          this.canvas.style.width = '100%';
+          this.canvas.style.height = 'auto';
+          
+          this.ctx.scale(dpr, dpr);
+
+          const renderContext = {
+            canvasContext: this.ctx,
+            viewport: viewport
+          };
+          
+          const renderTask = page.render(renderContext);
+
+          renderTask.promise.then(() => {
+            this.pageRendering = false;
+            if (this.pageNumPending !== null) {
+              this.renderPage(this.pageNumPending);
+              this.pageNumPending = null;
+            }
+          });
+        });
+
+        this.currPageSpan.textContent = num;
+        this.updateButtons();
+      }
+
+      queueRenderPage(num) {
+        if (this.pageRendering) {
+          this.pageNumPending = num;
+        } else {
+          this.renderPage(num);
+        }
+      }
+
+      updateButtons() {
+        this.prevBtn.disabled = (this.pageNum <= 1);
+        this.nextBtn.disabled = (this.pageNum >= this.pdfDoc.numPages);
+      }
+
+      setupListeners() {
+        this.prevBtn.addEventListener('click', () => {
+          if (this.pageNum <= 1) return;
+          this.pageNum--;
+          this.queueRenderPage(this.pageNum);
+        });
+
+        this.nextBtn.addEventListener('click', () => {
+          if (this.pageNum >= this.pdfDoc.numPages) return;
+          this.pageNum++;
+          this.queueRenderPage(this.pageNum);
+        });
+
+        // Responsive re-render on resize
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeTimeout);
+          resizeTimeout = setTimeout(() => {
+            if (this.pdfDoc) this.renderPage(this.pageNum);
+          }, 200);
+        });
+      }
+    }
+
+    // Initialize both PDF instances safely using your relative paths
+    window.addEventListener('DOMContentLoaded', () => {
+      new PDFSlideshow('pdf-viewer-1', 'Portfolio/HiggsResearchPoster/Higgs Research Poster-1.pdf');
+      new PDFSlideshow('pdf-viewer-2', 'Portfolio/Identities_Arising_from_the_Graph_Varieties_axiomatized_by_the_term_equation-17.pdf');
+    });
+  </script>
 </body>
 </html>
