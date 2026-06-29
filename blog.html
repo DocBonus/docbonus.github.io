@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Shawanwit "Bonus" Poomsa-ad</title>
+
+  <!-- ============================================================
+    STYLES — same design tokens as index.html
+    ============================================================ -->
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Design Tokens ─────────────────────────────────────────── */
+    :root {
+      --black:     #111111;
+      --off-white: #F5F5F0;
+      --red:       #D32F2F;
+      --mid:       #444444;
+      --muted:     #888888;
+      --rule:      3px solid #111111;
+    }
+
+    /* ── Base ──────────────────────────────────────────────────── */
+    html { font-size: 16px; }
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background: var(--off-white);
+      color: var(--black);
+      min-height: 100vh;
+    }
+
+    /* ── Navigation ────────────────────────────────────────────── */
+    nav {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      padding: 40px 48px 16px;
+      border-bottom: var(--rule);
+    }
+    .nav-name {
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--black); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--black); text-decoration: none;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 2px;
+      transition: border-color 0.15s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active,
+    .nav-links a:focus { border-color: var(--red); outline: none; }
+
+    /* ── Page Header ───────────────────────────────────────────── */
+    .page-header {
+      padding: 64px 48px 0;
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 48px;
+      align-items: end;
+    }
+    .page-title {
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 700; letter-spacing: -0.02em; line-height: 1;
+    }
+    .page-title .accent { color: var(--red); }
+    .page-meta { padding-bottom: 6px; }
+    .label {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 12px;
+    }
+    .page-desc { font-size: 13px; line-height: 1.75; color: var(--mid); }
+
+    /* ── Section Chrome ────────────────────────────────────────── */
+    .section { padding: 64px 48px 0; }
+    .section-header {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 24px; align-items: end;
+      margin-bottom: 40px;
+    }
+    .section-num {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--red); padding-bottom: 14px;
+    }
+    .section-title {
+      font-size: clamp(22px, 3vw, 36px); font-weight: 700;
+      letter-spacing: -0.01em;
+      border-top: 2px solid var(--black); padding-top: 12px;
+    }
+
+    /* ── Blog Post Grid ────────────────────────────────────────── */
+    /*
+      Same Bauhaus grid-line technique as the research grid in index.html.
+      Each .post-cell is one blog entry. The grid uses 1 column by default;
+      switch to 2 columns if you have many short posts.
+
+      To add a new post:
+        1. Copy a POST block below into .post-grid.
+        2. Fill in the date, category, title, excerpt, and href.
+    */
+    .post-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--black);
+    }
+
+    .post-cell {
+      background: var(--off-white);
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Post meta row: date + category */
+    .post-meta {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .post-date {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .post-category {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--red);
+    }
+
+    .post-title {
+      font-size: 20px; font-weight: 700;
+      line-height: 1.25; margin-bottom: 14px;
+    }
+    .post-excerpt {
+      font-size: 13px; line-height: 1.8;
+      color: var(--mid); flex: 1;
+    }
+    .post-link {
+      display: inline-block; margin-top: 20px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--red); text-decoration: none;
+      border-bottom: 1px solid var(--red); padding-bottom: 2px;
+      align-self: flex-start;
+    }
+    .post-link:hover { opacity: 0.75; }
+
+    /* Empty state — shown when no posts exist yet */
+    .post-empty {
+      grid-column: 1 / -1;
+      background: var(--off-white);
+      padding: 64px 48px;
+      text-align: center;
+    }
+    .post-empty-label {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 16px;
+    }
+    .post-empty-title {
+      font-size: 24px; font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .post-empty-body {
+      font-size: 13px; line-height: 1.75; color: var(--mid);
+    }
+
+    /* ── Footer ────────────────────────────────────────────────── */
+    footer {
+      margin-top: 80px; padding: 24px 48px;
+      border-top: var(--rule);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-left {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .footer-mark {
+      width: 32px; height: 32px;
+      background: var(--red);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .footer-mark span { font-size: 11px; font-weight: 700; color: #ffffff; letter-spacing: 0.06em; }
+
+    /* ── Responsive ────────────────────────────────────────────── */
+    @media (max-width: 680px) {
+      nav { grid-template-columns: 1fr; gap: 20px; padding: 24px 24px 14px; }
+      .nav-links { gap: 20px; }
+      .page-header { grid-template-columns: 1fr; padding: 40px 24px 0; gap: 24px; }
+      .section { padding: 48px 24px 0; }
+      .post-grid { grid-template-columns: 1fr; }
+      footer { padding: 24px; flex-direction: column; gap: 16px; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+    NAVIGATION
+    "Blog" link is marked active on this page.
+    ============================================================ -->
+  <nav>
+    <a class="nav-name" href="/">Shawanwit Poomsa-ad</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/Portfolio/shawanwitCV.pdf">CV</a>
+      <a href="/#research">Research</a>
+      <a href="blog.html" class="active">Blog</a>
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+    PAGE HEADER
+    ============================================================ -->
+  <header class="page-header">
+
+    <!-- Title -->
+    <div>
+      <h1 class="page-title">
+        Writing &<br>
+        <span class="accent">Notes</span>
+      </h1>
+    </div>
+
+    <!-- Aside description — edit freely -->
+    <div class="page-meta">
+      <p class="label">Blog</p>
+      <p class="page-desc">Occasional notes on mathematics, physics, and ideas worth writing down.</p>
+    </div>
+
+  </header>
+
+
+  <!-- ============================================================
+    SECTION 01 — POSTS
+    ============================================================ -->
+  <section class="section">
+
+    <div class="section-header">
+      <div class="section-num">01 — Posts</div>
+      <h2 class="section-title">All Writing</h2>
+    </div>
+
+    <!-- ── Post Grid ──────────────────────────────────────────────
+      To add a post, copy a POST block below and fill in:
+        · post-date      — e.g. "June 2026"
+        · post-category  — e.g. "Mathematics" or "Physics"
+        · post-title     — the article title
+        · post-excerpt   — 2–3 sentence preview
+        · post-link href — path to the full post file or URL
+
+      Posts appear left-to-right, top-to-bottom in the 2-col grid.
+      If you want full-width posts, add style="grid-column: 1 / -1"
+      to the .post-cell div.
+    ─────────────────────────────────────────────────────────────── -->
+    <div class="post-grid">
+
+
+      <!-- ══════════════════════════════════════════════════════════
+           POST 1 — Example placeholder
+           Replace this block with your first real post.
+           ══════════════════════════════════════════════════════════ -->
+      <div class="post-cell">
+        <div class="post-meta">
+          <span class="post-date">Coming Soon</span>
+          <span class="post-category">Mathematics</span>
+        </div>
+        <h2 class="post-title">On Graph Algebras and What They Reveal</h2>
+        <p class="post-excerpt">
+          A gentle introduction to graph varieties — why directed graphs can carry algebraic structure, and what term equations tell us about their shape. Written for a general mathematical audience.
+        </p>
+        <a class="post-link" href="#">Read more →</a>
+      </div>
+      <!-- ══ END POST 1 ════════════════════════════════════════════ -->
+
+
+      <!-- ══════════════════════════════════════════════════════════
+           POST 2 — Example placeholder
+           Replace this block with your second real post.
+           ══════════════════════════════════════════════════════════ -->
+      <div class="post-cell">
+        <div class="post-meta">
+          <span class="post-date">Coming Soon</span>
+          <span class="post-category">Physics</span>
+        </div>
+        <h2 class="post-title">Finding the Higgs Yourself</h2>
+        <p class="post-excerpt">
+          A walkthrough of the analysis pipeline we built to rediscover the Higgs boson using CMS open data — from raw collision events to the invariant-mass peak at 125 GeV.
+        </p>
+        <a class="post-link" href="#">Read more →</a>
+      </div>
+      <!-- ══ END POST 2 ════════════════════════════════════════════ -->
+
+
+      <!-- ══════════════════════════════════════════════════════════
+           ADD NEW POSTS ABOVE THIS LINE
+           ══════════════════════════════════════════════════════════ -->
+
+
+    </div>
+    <!-- ── End Post Grid ─────────────────────────────────────────── -->
+
+  </section>
+  <!-- ── End Section 01 ──────────────────────────────────────────── -->
+
+
+  <!-- ============================================================
+    FOOTER
+    ============================================================ -->
+  <footer>
+    <p class="footer-left">Shawanwit Poomsa-ad · Bangkok, Thailand</p>
+    <div class="footer-mark" aria-hidden="true"><span>SP</span></div>
+  </footer>
+
+</body>
+</html>
