@@ -342,11 +342,47 @@
 
 
       <!-- ══════════════════════════════════════════════════════════
-           ENTRY 1 — Higgs Boson Research
-           Particle Physics · Purdue University
+           ENTRY 1 — Knot Invariants via KANs
+           Knot Theory · Machine Learning · Purdue University
            ══════════════════════════════════════════════════════════ -->
 
       <!-- Entry 1 · Text description (left column) -->
+      <div class="paper-cell">
+        <p class="paper-label">Knot Theory · Machine Learning · Purdue University</p>
+        <h3 class="paper-title">Predicting Knot Invariants via Kolmogorov–Arnold Networks</h3>
+        <p class="paper-body">
+          This work determined the learnability of knot invariants using neural networks. We trained a Kolmogorov–Arnold Network (KAN) to predict the Bridge Number of a knot directly from its Gauss code. We showed KANs can 'learn' non-trivial knot invariants, but not as well as other neural networks.
+          <br><br>
+          <em>Conducted through the Purdue Experimental Mathematics Laboratory with Anand Shanker (Purdue CS &amp; Math), Benjamin Mudrak, under the supervision of Prof. Thi Hanh Vo and program coordinator Prof. Thomas Sinclair.</em>
+        </p>
+        <a class="paper-link" href="/Portfolio/KnotsResearchPoster/PresentationKnots.pdf">Download poster PDF →</a>
+      </div>
+
+      <!-- Entry 1 · PDF preview (right column) -->
+      <div class="pdf-viewer" id="knots-viewer">
+        <div class="pdf-viewer-header">
+          <span class="pdf-viewer-label">Document Preview</span>
+          <a class="pdf-viewer-open" href="/Portfolio/KnotsResearchPoster/PresentationKnots.pdf" target="_blank">Open →</a>
+        </div>
+        <div class="pdf-canvas-wrap" id="knots-wrap">
+          <p class="pdf-loading" id="knots-loading">Loading poster…</p>
+        </div>
+        <div class="pdf-controls">
+          <button class="pdf-btn" id="knots-prev" disabled>← Prev</button>
+          <span class="pdf-page-info" id="knots-info">— / —</span>
+          <button class="pdf-btn" id="knots-next" disabled>Next →</button>
+        </div>
+      </div>
+
+      <!-- ══ END ENTRY 1 ══════════════════════════════════════════ -->
+
+
+      <!-- ══════════════════════════════════════════════════════════
+           ENTRY 2 — Higgs Boson Research
+           Particle Physics · Purdue University
+           ══════════════════════════════════════════════════════════ -->
+
+      <!-- Entry 2 · Text description (left column) -->
       <div class="paper-cell">
         <p class="paper-label">Particle Physics · Purdue University</p>
         <h3 class="paper-title">Unlocking the Universe: Rediscovering the Higgs Boson</h3>
@@ -358,7 +394,7 @@
         <a class="paper-link" href="/Portfolio/HiggsResearchPoster/Higgs%20Research%20Poster-1.pdf">Download poster PDF →</a>
       </div>
 
-      <!-- Entry 1 · PDF preview (right column) -->
+      <!-- Entry 2 · PDF preview (right column) -->
       <div class="pdf-viewer" id="higgs-viewer">
         <div class="pdf-viewer-header">
           <span class="pdf-viewer-label">Document Preview</span>
@@ -374,15 +410,15 @@
         </div>
       </div>
 
-      <!-- ══ END ENTRY 1 ══════════════════════════════════════════ -->
+      <!-- ══ END ENTRY 2 ══════════════════════════════════════════ -->
 
 
       <!-- ══════════════════════════════════════════════════════════
-           ENTRY 2 — Graph Varieties (Universal Algebra)
+           ENTRY 3 — Graph Varieties (Universal Algebra)
            Universal Algebra · Purdue University
            ══════════════════════════════════════════════════════════ -->
 
-      <!-- Entry 2 · Text description (left column) -->
+      <!-- Entry 3 · Text description (left column) -->
       <div class="paper-cell">
         <p class="paper-label">Universal Algebra · Independent Research</p>
         <h3 class="paper-title">Identities of the Graph Variety Axiomatized by x²y ≈ xy²</h3>
@@ -394,7 +430,7 @@
         <a class="paper-link" href="/Portfolio/Identities_Arising_from_the_Graph_Varieties_axiomatized_by_the_term_equation-17.pdf">Download slides PDF →</a>
       </div>
 
-      <!-- Entry 2 · PDF preview (right column) -->
+      <!-- Entry 3 · PDF preview (right column) -->
       <div class="pdf-viewer" id="slides-viewer">
         <div class="pdf-viewer-header">
           <span class="pdf-viewer-label">Document Preview</span>
@@ -410,7 +446,7 @@
         </div>
       </div>
 
-      <!-- ══ END ENTRY 2 ══════════════════════════════════════════ -->
+      <!-- ══ END ENTRY 3 ══════════════════════════════════════════ -->
 
 
       <!-- ══════════════════════════════════════════════════════════
@@ -536,7 +572,18 @@
        update all ids and the src path, and you're done.
     ─────────────────────────────────────────────────────────────── */
 
-    /* Entry 1 — Higgs Boson poster */
+    /* Entry 1 — Knot Invariants poster */
+    makeViewer({
+      viewer:  'knots-viewer',
+      wrap:    'knots-wrap',
+      loading: 'knots-loading',
+      info:    'knots-info',
+      prev:    'knots-prev',
+      next:    'knots-next',
+      src:     '/Portfolio/KnotsResearchPoster/PresentationKnots.pdf',
+    });
+
+    /* Entry 2 — Higgs Boson poster */
     makeViewer({
       viewer:  'higgs-viewer',
       wrap:    'higgs-wrap',
@@ -547,7 +594,7 @@
       src:     '/Portfolio/HiggsResearchPoster/Higgs%20Research%20Poster-1.pdf',
     });
 
-    /* Entry 2 — Graph Varieties slides */
+    /* Entry 3 — Graph Varieties slides */
     makeViewer({
       viewer:  'slides-viewer',
       wrap:    'slides-wrap',
