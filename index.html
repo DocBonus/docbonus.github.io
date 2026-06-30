@@ -24,7 +24,7 @@
     }
 
     /* ── Base ──────────────────────────────────────────────────── */
-    html { font-size: 16px; }
+    html { font-size: 18px; }
     body {
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       background: var(--off-white);
@@ -41,13 +41,13 @@
       border-bottom: var(--rule);
     }
     .nav-name {
-      font-size: 13px; font-weight: 700;
+      font-size: 14px; font-weight: 700;
       letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--black); text-decoration: none;
     }
     .nav-links { display: flex; gap: 32px; }
     .nav-links a {
-      font-size: 11px; font-weight: 700;
+      font-size: 12px; font-weight: 700;
       letter-spacing: 0.14em; text-transform: uppercase;
       color: var(--black); text-decoration: none;
       border-bottom: 2px solid transparent;
@@ -73,12 +73,12 @@
     .hero-name .accent { color: var(--red); }
     .hero-right { padding-top: 8px; }
     .label {
-      font-size: 10px; font-weight: 700;
+      font-size: 11px; font-weight: 700;
       letter-spacing: 0.18em; text-transform: uppercase;
       color: var(--muted); margin-bottom: 12px;
     }
     .dedication {
-      font-size: 13px; line-height: 1.75; color: var(--mid);
+      font-size: 16px; line-height: 1.75; color: var(--mid);
       border-left: 3px solid var(--red);
       padding-left: 16px; font-style: italic;
     }
@@ -98,7 +98,7 @@
       writing-mode: vertical-rl;
       transform: rotate(180deg);
     }
-    .intro-bar p { font-size: 13px; line-height: 1.75; color: #cccccc; }
+    .intro-bar p { font-size: 16px; line-height: 1.75; color: #cccccc; }
 
     /* ── Section Chrome ────────────────────────────────────────── */
     .section { padding: 64px 48px 0; }
@@ -109,12 +109,12 @@
       margin-bottom: 40px;
     }
     .section-num {
-      font-size: 10px; font-weight: 700;
+      font-size: 11px; font-weight: 700;
       letter-spacing: 0.18em; text-transform: uppercase;
       color: var(--red); padding-bottom: 14px;
     }
     .section-title {
-      font-size: clamp(22px, 3vw, 36px); font-weight: 700;
+      font-size: clamp(28px, 3vw, 42px); font-weight: 700;
       letter-spacing: -0.01em;
       border-top: 2px solid var(--black); padding-top: 12px;
     }
@@ -135,16 +135,16 @@
     }
     .paper-cell { background: var(--off-white); padding: 28px; }
     .paper-label {
-      font-size: 10px; font-weight: 700;
+      font-size: 11px; font-weight: 700;
       letter-spacing: 0.14em; text-transform: uppercase;
       color: var(--muted); margin-bottom: 10px;
     }
-    .paper-title { font-size: 18px; font-weight: 700; line-height: 1.3; margin-bottom: 14px; }
-    .paper-body  { font-size: 13px; line-height: 1.8; color: var(--mid); }
+    .paper-title { font-size: 21px; font-weight: 700; line-height: 1.3; margin-bottom: 14px; }
+    .paper-body  { font-size: 16px; line-height: 1.8; color: var(--mid); }
     .paper-body em { font-style: italic; color: #666666; }
     .paper-link {
       display: inline-block; margin-top: 20px;
-      font-size: 11px; font-weight: 700;
+      font-size: 12px; font-weight: 700;
       letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--red); text-decoration: none;
       border-bottom: 1px solid var(--red); padding-bottom: 2px;
@@ -172,12 +172,12 @@
       border-bottom: 1px solid #d8d8d4;
     }
     .pdf-viewer-label {
-      font-size: 10px; font-weight: 700;
+      font-size: 11px; font-weight: 700;
       letter-spacing: 0.18em; text-transform: uppercase;
       color: var(--muted);
     }
     .pdf-viewer-open {
-      font-size: 10px; font-weight: 700;
+      font-size: 11px; font-weight: 700;
       letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--red); text-decoration: none;
     }
@@ -188,18 +188,18 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 16px 20px;
+      padding: 20px 24px;
       overflow: hidden;
-      height: 210px;
+      height: 280px;
     }
     .pdf-canvas-wrap canvas {
       max-width: 100%;
-      max-height: 178px;
+      max-height: 240px;
       display: block;
       box-shadow: 0 2px 12px rgba(0,0,0,0.14);
     }
     .pdf-loading {
-      font-size: 10px; font-weight: 700;
+      font-size: 11px; font-weight: 700;
       letter-spacing: 0.14em; text-transform: uppercase;
       color: var(--muted);
     }
@@ -215,7 +215,7 @@
       background: none; border: none;
       color: var(--mid);
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      font-size: 10px; font-weight: 700;
+      font-size: 11px; font-weight: 700;
       letter-spacing: 0.14em; text-transform: uppercase;
       cursor: pointer; padding: 11px 18px;
       transition: color 0.15s, background 0.15s;
@@ -224,7 +224,7 @@
     .pdf-btn:disabled { opacity: 0.18; cursor: default; }
     .pdf-page-info {
       flex: 1; text-align: center;
-      font-size: 10px; font-weight: 700;
+      font-size: 11px; font-weight: 700;
       letter-spacing: 0.14em; text-transform: uppercase;
       color: var(--muted);
       display: flex; align-items: center; justify-content: center;
@@ -237,7 +237,7 @@
       display: flex; justify-content: space-between; align-items: center;
     }
     .footer-left {
-      font-size: 10px; font-weight: 700;
+      font-size: 11px; font-weight: 700;
       letter-spacing: 0.14em; text-transform: uppercase;
       color: var(--muted);
     }
@@ -246,7 +246,7 @@
       background: var(--red);
       display: flex; align-items: center; justify-content: center;
     }
-    .footer-mark span { font-size: 11px; font-weight: 700; color: #ffffff; letter-spacing: 0.06em; }
+    .footer-mark span { font-size: 12px; font-weight: 700; color: #ffffff; letter-spacing: 0.06em; }
 
     /* ── Responsive ────────────────────────────────────────────── */
     @media (max-width: 680px) {
@@ -351,7 +351,7 @@
         <p class="paper-label">Knot Theory · Machine Learning · Purdue University</p>
         <h3 class="paper-title">Predicting Knot Invariants via Kolmogorov–Arnold Networks</h3>
         <p class="paper-body">
-          This work determined the learnability of knot invariants using neural networks. We trained a Kolmogorov–Arnold Network (KAN) to predict the Bridge Number of a knot directly from its Gauss code. We showed KANs can 'learn' non-trivial knot invariants, but not as well as other neural networks.
+          This work determined the learnability of knot invariants using neural networks. We trained a Kolmogorov–Arnold Network (KAN) to predict the Bridge Number of a knot directly from its Gauss code. 
           <br><br>
           <em>Conducted through the Purdue Experimental Mathematics Laboratory with Anand Shanker (Purdue CS &amp; Math), Benjamin Mudrak, under the supervision of Prof. Thi Hanh Vo and program coordinator Prof. Thomas Sinclair.</em>
         </p>
